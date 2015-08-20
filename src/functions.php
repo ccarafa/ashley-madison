@@ -2,7 +2,7 @@
 
 define('REMOTE_URI', 'https://ashley.cynic.al/check');
 define('SQL_SEARCH', 'SELECT email, result FROM records WHERE email = ?');
-define('SQL_INSERT', 'INSERT INTO RECORDS(email, result) VALUES (?, ?)');
+define('SQL_INSERT', 'INSERT INTO records(email, result) VALUES (?, ?)');
 
 
 /**
@@ -37,7 +37,6 @@ function is_email ($email) {
  */
 function get_result_from_database ($email) {
   $pdo_connection = get_database();
-  $pdo_connection = new PDO('mysql:host=127.0.0.1;dbname=am', 'am', 'am');
   $pdo_statement  = $pdo_connection->prepare(SQL_SEARCH);
   $pdo_result     = $pdo_statement->execute(array($email));
   if ($pdo_result) {
