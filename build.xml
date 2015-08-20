@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="work-theme" default="build">
+  <!-- By default, we assume all tools to be on the $PATH -->
+  <property name="toolsdir" value="${basedir}/vendor/bin/"/>
+
+  <!-- Uncomment the following when the tools are in ${basedir}/vendor/bin -->
+  <!-- <property name="toolsdir" value="${basedir}/vendor/bin/"/> -->
+
+  <target name="build"
+    depends="prepare,lint,phploc"
+    description="" />
+
+  <target name="clean"
+    unless="clean.done"
+    description="Cleanup build artifacts">
+    <delete dir="${basedir}/build/api"/>
+    <delete dir="${basedir}/build/coverage"/>
+    <delete dir="${basedir}/build/logs"/>
+    <property name="clean.done" value="true"/>
+  </target>
+
+  <target name="prepare"
+    unless="prepare.done"
+    depends="clean"
+    description="Prepare for build">
+    <mkdir dir="${basedir}/build/coverage"/>
+    <mkdir dir="${basedir}/build/logs"/>
+    <property name="prepare.done" value="true"/>
+  </target>
+
+  <target name="copy-src">
+    <copy todir="${basedir}/build/html/">
+      <fileset dir="${basedir}/src">
+        <exclude name="sass/*" />
+        <exclude name="bower.json" />
+      </fileset>
+    </copy>
+
+  </target>
+
+  <target name="lint"
+    unless="lint.done"
+    description="Perform syntax check of sourcecode files">
+    <apply executable="php" failonerror="true" taskname="lint">
+      <arg value="-l" />
+
+      <fileset dir="${basedir}/src">
+        <include name="**/*.php" />
+        <modified />
+      </fileset>
+
+
+      <fileset dir="${basedir}/tests">
+        <include name="**/*.php" />
+        <modified />
+      </fileset>
+    </apply>
+
+    <property name="lint.done" value="true"/>
+  </target>
+
+  <target name="phploc"
+    unless="phploc.done"
+    description="Measure project size using PHPLOC and print human readable output. Intended for usage on the command line.">
+    <exec executable="${toolsdir}phploc" taskname="phploc">
+      <arg value="--count-tests" />
+      <arg path="${basedir}/src" />
+      <arg path="${basedir}/tests" />
+    </exec>
+
+    <property name="phploc.done" value="true"/>
+  </target>
+
+</project>

@@ -1,0 +1,17 @@
+{
+    "name": "corycollier/ashley-madision",
+    "description": "Software to determine if a person's email is on the Ashley Madision Hack List",
+    "require-dev": {
+        "phpunit/phpunit": "^5.1@dev",
+        "phploc/phploc": "^3.0@dev"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cory Collier",
+            "email": "corycollier@corycollier.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

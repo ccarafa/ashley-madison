@@ -1,0 +1,9 @@
+# folders
+/vendor/
+src/bower_components
+
+# files
+.DS_Store
+composer.lock
+cache.properties
+build/html
