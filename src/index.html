@@ -12,8 +12,7 @@
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
@@ -31,24 +30,72 @@
           <p>Enter an email address below to see if it was on the inclusion list for the Ashley Madision hack list</p>
         </div>
       </div>
+
+
       <div class="row">
         <div class="col-md-12">
-          <form>
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" class="form-control" id="email" placeholder="Email" name="email" />
-            </div>
-            <div class="form-group">
-              <label for="contacts">File input</label>
-              <input type="file" id="contacts" name="contacts">
-              <p class="help-block">CSV uploads are allowed as well</p>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-      </div>
-    </div>
+         <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#tab-email" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+            </li>
+            <li role="presentation">
+              <a href="#tab-upload" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+            </li>
+          </ul>
 
-    <script src="bower_components/bootstrap/dist/bootstrap.min.js"></script>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tab-email">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="alert alert-success" data-dismiss="alert" aria-label="Close"></div>
+                  <div class="alert alert-danger" data-dismiss="alert" aria-label="Close"></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <form validate id="checker">
+
+                    <div class="form-group">
+                      <label for="email">Email address</label>
+                      <input type="email" class="form-control" id="email" placeholder="Email" name="email" />
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+
+                </div>
+              </div>
+            </div><!-- END .tab-pane -->
+            <div role="tabpanel" class="tab-pane" id="tab-upload">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="progress" class="progress">
+                    <div id="bar" class="progress-bar" role="progress-bar" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+                  <form validate id="uploader" enctype="multipart/form-data" action="csv.php" method="post">
+                    <div class="form-group">
+                      <label for="contacts">File input</label>
+                      <input type="file" id="contacts" name="contacts">
+                      <p class="help-block">CSV uploads are allowed as well</p>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div><!-- END .tab-pane -->
+          </div><!-- END .tab-content -->
+        </div><!-- END .col-md-12 -->
+      </div><!-- END .row -->
+    </div><!-- END .container -->
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="js/app.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
