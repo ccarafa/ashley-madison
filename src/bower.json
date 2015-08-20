@@ -1,0 +1,23 @@
+{
+  "name": "ashley-madision",
+  "version": "0.0.0",
+  "authors": [
+    "Cory Collier <corycollier@corycollier.com>"
+  ],
+  "description": "Site to allow users to see if a given email is in the Ashley Madision Hack List. Also allows bulk uploads of CSV files to check more than one result at once",
+  "main": "index.html",
+  "keywords": [
+    "ashley",
+    "madision",
+    "hack",
+    "tool"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
